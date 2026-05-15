@@ -4,7 +4,6 @@
 #include <strings.h>
 #ifndef USE_AVL
 #define USE_AVL 1
-#endif
 
 typedef struct Node {
     char *word;
