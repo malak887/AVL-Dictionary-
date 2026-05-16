@@ -151,7 +151,6 @@ Node* inorderPredecessor(Node *root, Node *target) {
 Node* inorderSuccessor(Node *root, Node *target) {
     if (root == NULL || target == NULL) return NULL;
 
-    /* Case 1: right subtree exists -> leftmost of right subtree. */
     if (target->right != NULL) {
         Node *cur = target->right;
         while (cur->left != NULL) cur = cur->left;
