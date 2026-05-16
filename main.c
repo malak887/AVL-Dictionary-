@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <strings.h>   /* for strcasecmp
+#include <strings.h>  
 #ifndef USE_AVL
 #define USE_AVL 1
 #endif
