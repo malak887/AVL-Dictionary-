@@ -228,11 +228,13 @@ int main(){
             printf("\n%s is INCORRECT\n",token);
             printf("Suggestions:\n");
             if (lastVisited)
-                printf("1. %s\n",lastVisited->word);
-            Node *pred =inorderPredecessor(root,lastVisited->word);
-            Node *succ =inorderSuccessor(root,lastVisited->word);
-            printf("2. %s\n",pred ? pred->word: "None");
-            printf("3. %s\n",succ ? succ->word: "None");
+                printf("1. %s\n", lastVisited->word);
+
+            Node *pred = inorderPredecessor(root, lastVisited);
+            Node *succ = inorderSuccessor(root, lastVisited);
+
+            printf("2. %s\n", pred ? pred->word : "None");
+            printf("3. %s\n", succ ? succ->word : "None");
         }
         token =strtok(NULL," ,.!?;:\n\t");
     }
