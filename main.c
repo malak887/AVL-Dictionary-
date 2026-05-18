@@ -90,7 +90,7 @@ Node* insert(Node *root, const char *word) {
     else if (cmp > 0)
         root->right = insert(root->right, word);
     else
-        return root;                /* duplicate -> ignore */
+        return root;               
 
 #if USE_AVL
     updateHeight(root);
