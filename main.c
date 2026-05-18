@@ -5,6 +5,7 @@
 #ifndef USE_AVL
 #define USE_AVL 1
 #endif
+#define MAX_WORD 100
 typedef struct Node {
     char *word;
     struct Node *left;
@@ -178,3 +179,22 @@ void freeTree(Node *root) {
     free(root->word);
     free(root);
 }
+
+// loading the dictionary 
+Node* loadDictionary(char *filename) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Cannot open file!\n");
+        return NULL;
+    }
+    Node *root = NULL;
+    char word[MAX_WORD];
+
+    while (fgets(word,sizeof(word),file)) {
+        word[strcspn(word, "\n")] = '\0';
+        root = insert(root, word);
+    }
+    fclose(file); return root;
+}
+
+
