@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>  
+#include <ctype.h>
 #ifndef USE_AVL
 #define USE_AVL 1
 #endif
 #define MAX_WORD 100
+#define MAX_SENTENCE 1000
 typedef struct Node {
     char *word;
     struct Node *left;
@@ -196,5 +198,43 @@ Node* loadDictionary(char *filename) {
     }
     fclose(file); return root;
 }
+//convert the input to lowercase , to facilitate the search
+void toLowerCase(char *str) {
 
+    for (int i = 0; str[i]; i++) {
+        str[i]= tolower(str[i]);
+    }
+}
 
+int main(){
+     Node *root =loadDictionary("dictionary.txt");
+    if (root == NULL)
+        return 1;
+    char sentence[MAX_SENTENCE];
+
+    printf("\nEnter a sentence:\n");
+    fgets(sentence,sizeof(sentence),stdin);
+    char *token =strtok(sentence, " ,.!?;:\n\t");
+    while (token != NULL) {
+        toLowerCase(token);
+        Node *lastVisited = NULL;
+        Node *found =search(root,token,&lastVisited);
+        if (found != NULL) {
+            printf("\n%s is CORRECT\n",
+                   token);
+        }
+        else {
+
+            printf("\n%s is INCORRECT\n",token);
+            printf("Suggestions:\n");
+            if (lastVisited)
+                printf("1. %s\n",lastVisited->word);
+            Node *pred =inorderPredecessor(root,lastVisited->word);
+            Node *succ =inorderSuccessor(root,lastVisited->word);
+            printf("2. %s\n",pred ? pred->word: "None");
+            printf("3. %s\n",succ ? succ->word: "None");
+        }
+        token =strtok(NULL," ,.!?;:\n\t");
+    }
+
+}
