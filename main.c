@@ -210,6 +210,8 @@ int main(){
      Node *root =loadDictionary("dictionary.txt");
     if (root == NULL)
         return 1;
+    printf("\nAVL tree height: %d\n", treeheight(root));
+    printf("AVL tree size: %d\n", treecount(root));
     char sentence[MAX_SENTENCE];
 
     printf("\nEnter a sentence:\n");
@@ -238,5 +240,6 @@ int main(){
         }
         token =strtok(NULL," ,.!?;:\n\t");
     }
-
+    freeTree(root);
+    return 0;
 }

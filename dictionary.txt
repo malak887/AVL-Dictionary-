@@ -1,6 +1,11 @@
 apple
 is
 the
+this
+myself 
+yourself
+herself
+himself
 are
 i
 he
