@@ -14,3 +14,24 @@ A simple C program that loads words from `dictionary.txt` into an AVL tree and c
 3. Run the executable and enter a sentence to check
 
 ## Test cases
+```
+AVL tree height: 10
+AVL tree size: 242
+
+Enter a sentence:
+I studdy mathmatcs
+
+i is CORRECT
+
+studdy is INCORRECT
+Suggestions:
+1. student
+2. structure
+3. study
+
+mathmatcs is INCORRECT
+Suggestions:
+1. mathematics
+2. market
+3. melon
+```

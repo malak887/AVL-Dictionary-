@@ -11,6 +11,9 @@ i
 he
 it
 she
+study
+listen
+write
 banana
 orange
 grape
